@@ -12,10 +12,37 @@ use App\Http\Requests\RegisterRequest;
 
 class CustomerController extends Controller
 {
+
+    // Home Customer
+    public function showhome(){
+        return view('homecust');
+    }
+
+    //Home About
+    public function showabout(){
+        return view('about');
+    }
+
+    //Home ProfileCust 
+    public function showprofilecust(){
+        return view('profilecust');
+    }
+
+    //Home Logout
+    public function showlogoutcust(){
+        return view('logoutcust');
+    }
+
+    //Home Contact
+    public function showcontact(){
+        return view('contact'); 
+    }
+
     // Register customer
     public function show(){
         return view('register');
     }
+
 
     public function store(RegisterRequest $request)
     {
@@ -76,6 +103,7 @@ class CustomerController extends Controller
         } else {
             return redirect()->back()->withErrors(['login_error' => 'Invalid username or password.']);
         }
+        return redirect()->route('customer.home');
         
     }
 

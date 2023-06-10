@@ -23,6 +23,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Home customer
+Route::get('/customer/home', [CustomerController::class, 'showhome'])->name('customer.home');
+
+//About
+Route::get('/customer/home/about', [CustomerController::class, 'showabout'])->name('customer.about');
+
+//Profile Customer
+Route::get('/customer/home/profilecust', [CustomerController::class, 'showprofilecust'])->name('customer.profilecust');
+
+//Logout
+Route::get('/customer/home/logoutcut', [CustomerController::class, 'showlogoutcust'])->name('customer.logout');
+
+//Contact
+Route::get('/customer/home/contact', [CustomerController::class, 'showcontact'])->name('customer.contact');
+
 // Login
 Route::get('/customer/login', [CustomerController::class, 'showlogin']);
 Route::post('/customer/login', [CustomerController::class, 'login'])->name('customer.login');
