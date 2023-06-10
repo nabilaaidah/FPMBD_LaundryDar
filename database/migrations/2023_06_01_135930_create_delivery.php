@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('delivery', function (Blueprint $table) {
             $table->id('div_id');
-            $table->timestamp('div_date');
+            $table->timestamp('div_date')->nullable();
             $table->decimal('div_price', 10, 2);
             $table->string('div_address');
             $table->unsignedBigInteger('transaction_tsc_id');

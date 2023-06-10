@@ -9,10 +9,16 @@
     <title>Order Form</title>
   </head>
   <body>
-    <form action="{{ route('payment.processpaymentform', ['customerId' => $customerId]) }}" class="form">
+    <form action="{{ route('payment.processpaymentform', ['customerId' => $customerId]) }}" method="POST" class="form">
+      @csrf
       <h1 class="text-center">Payment Form</h1>
       <!-- Progress bar -->
       <div class="progressbar">
+          <div
+          class="progress-step progress-step-active"
+          data-title="Service"
+        ></div>
+        <div class="progress-step progress-step-active" data-title="Delivery"></div>
         <div class="progress-step progress-step-active" data-title="Total"></div>
         <div class="progress-step progress-step-active" data-title="Payment"></div>
       </div>

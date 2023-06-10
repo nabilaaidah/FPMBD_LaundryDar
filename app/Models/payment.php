@@ -16,8 +16,7 @@ class payment extends Model
                             'pm_amount',
                             'pm_discount',
                             'transaction_tsc_id',
-                            'created_at',
-                            'updated_at'];
+                            ];
     
     public function transaction(){
         return $this->belongsTo(transaction::class, 'transaction_tsc_id', 'tsc_id');

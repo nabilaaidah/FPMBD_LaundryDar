@@ -75,7 +75,7 @@ class TransactionController extends Controller
                 transaction_detail::create([
                     'tsc_td_id' => DB::raw("($newId + (SELECT COUNT(*) FROM transaction_detail WHERE tsc_td_id >= $newId))"),
                     'tsc_td_quantity' => $detail['qty'],
-                    'tsc_td_pricequantity' => $totaltd,
+                    'tsc_td_pricequantity' => 0,
                     'service_svc_id' => $service_svc_id,
                     'transaction_tsc_id' => $newtscId,
                 ]);
@@ -96,14 +96,16 @@ class TransactionController extends Controller
                 $maxId = delivery::max('div_id');
                 $newId = $maxId + 1;
 
+                $timestamp = strtotime('+3 days');
+                $dateAhead = date('Y-m-d', $timestamp);
+
                 $delivery = new delivery();
                 $delivery->div_id = $newId;
                 $delivery->transaction_tsc_id = $newtscId;
                 $delivery->div_address = $address;
-                $delivery->div_date = $tglSelesai;
+                $delivery->div_date = $dateAhead;
                 $delivery->div_price = $deliveryprice;
                 $delivery->employee_epl_id = rand(4, $maxeplId);
-                $tsc->tsc_tglambil = null;
                 $delivery->save();
             }
             $totalPrice += $deliveryprice;
@@ -111,7 +113,7 @@ class TransactionController extends Controller
             $tsc->update([
                 'tsc_totalprice' => $totalPrice,]);
             // dd($delivery);
-            return redirect()->route('payment.forminfo');
+            return redirect()->route('payment.paymenttotal', ['customerId' => $customerId]);
         }
         else{
             abort(404, 'Customer not found');

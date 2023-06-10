@@ -21,6 +21,8 @@
           data-title="Service"
         ></div>
         <div class="progress-step" data-title="Delivery"></div>
+        <div class="progress-step" data-title="Total"></div>
+        <div class="progress-step" data-title="Payment"></div>
       </div>
 
       <!-- Steps -->
