@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => 'c651a77652a9c4cff8c23d13cdf8d3e505b107a4',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '5937c0632b740d0df702dff660ffa3dcfcd36d71',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -371,9 +371,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'c651a77652a9c4cff8c23d13cdf8d3e505b107a4',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '5937c0632b740d0df702dff660ffa3dcfcd36d71',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -742,8 +742,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(

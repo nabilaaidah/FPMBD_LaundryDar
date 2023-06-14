@@ -20,9 +20,11 @@ class TransactionController extends Controller
 {
     public function showorderform($customerId)
     {
-        return view('transactionform', ['customerId' => $customerId]);
-    }
- 
+        $services = Service::pluck('svc_name', 'svc_id');
+        return view('transactionform', ['customerId' => $customerId, 'services' => $services]);
+    }    
+
+
     public function processorderform(Request $req, $customerId){
         $customerExists = customer::where('cst_id', $customerId)->exists();
         if($customerExists){
@@ -83,9 +85,13 @@ class TransactionController extends Controller
                 // dd($tsc_detail);
             }
 
-            $deliveryNeeded = $req->input('delivery') === 'yes';
-            $address = $req->input('address');
+            
+            $customer = customer::find($customerId);
 
+            $deliveryNeeded = $req->input('delivery') === 'yes';
+
+            $address = $req->input('address') ?? $customer->cst_address;
+            
             $deliveryprice = 0;
             if ($deliveryNeeded) {
                 $randomNumber = mt_rand(10000, 30000);
@@ -104,7 +110,7 @@ class TransactionController extends Controller
                 $delivery->transaction_tsc_id = $newtscId;
                 $delivery->div_address = $address;
                 $delivery->div_date = $dateAhead;
-                $delivery->div_price = $deliveryprice;
+                $delivery->div_price = 0;
                 $delivery->employee_epl_id = rand(4, $maxeplId);
                 $delivery->save();
             }

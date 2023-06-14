@@ -39,7 +39,7 @@ class PaymentController extends Controller
             'transaction_tsc_id' => $transaction->tsc_id,
         ];
         payment::create($paymentData);
-        print("Payment successful");
+        return redirect()->route('customer.orderhistory', ['customerId' => $customerId]);
     }
 
 }

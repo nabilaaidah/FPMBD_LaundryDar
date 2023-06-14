@@ -27,26 +27,7 @@ prevBtns.forEach((btn) => {
     }
   });
 });
-let i = 0;
-addMoreBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  // make a separation line
-  const formItems = document.getElementById("FormItems");
-  formItems.innerHTML += '<hr width="300px">';
-  i++;
-  // append the input field as needed
-  formItems.innerHTML += '<tr>' +
-  '<td>' +
-      '<select name="addmore['+i+'][service]" class="service form-control">' +
-          '<option value="cuci kering">Cuci kering</option>' +
-          '<option value="cuci basah">Cuci basah</option>' +
-          '<option value="cuci setrika">Cuci setrika</option>' +
-      '</select>' +
-  '</td>' +
-  '<td><input type="text" name="addmore['+i+'][qty]" placeholder="Enter your Qty" class="form-control" /></td>' +
-'</tr>';
-});
+    
 
 function updateFormSteps() {
   formSteps.forEach((formStep, idx) => {

@@ -95,8 +95,9 @@
             id="navbarCollapse"
           >
             <div class="navbar-nav ml-auto py-0">
-              <a href="{{ route('customer.home') }}" class="nav-item nav-link">Home</a>
-              <a href="{{ route('customer.about') }}" class="nav-item nav-link">About</a>
+              <a href="{{ route('customer.home', ['customerId' => $customerId]) }}" class="nav-item nav-link">Home</a>
+              <a href="{{ route('customer.orderhistory', ['customerId' => $customerId]) }}" class="nav-item nav-link">Order History</a>
+              <a href="{{ route('customer.about', ['customerId' => $customerId]) }}" class="nav-item nav-link">About</a>
               <!-- <a href="service.html" class="nav-item nav-link">Services</a>
               <a href="pricing.html" class="nav-item nav-link">Pricing</a> -->
               <div class="nav-item dropdown">
@@ -107,11 +108,11 @@
                   >Pages</a
                 >
                 <div class="dropdown-menu border-0 rounded-0 m-0">
-                  <a href="{{ route('customer.profilecust') }}" class="dropdown-item">My Profile</a>
-                  <a href="{{ route('customer.logout') }}" class="dropdown-item">Logout</a>
+                  <a href="{{ route('customer.profilecust', ['customerId' => $customerId]) }}" class="dropdown-item">My Profile</a>
+                  <a href="{{ route('customer.login', ['customerId' => $customerId]) }}" class="dropdown-item">Logout</a>
                 </div>
               </div>
-              <a href="{{ route('customer.contact') }}" class="nav-item nav-link active"
+              <a href="{{ route('customer.contact', ['customerId' => $customerId]) }}" class="nav-item nav-link active"
                 >Contact</a
               >
             </div>
@@ -132,9 +133,9 @@
           </div>
           <div class="col-md-6 text-center text-md-right">
             <div class="d-inline-flex align-items-center">
-              <a class="btn text-white" href="{{ route('customer.home') }}">Home</a>
+              <a class="btn text-white" href="{{ route('customer.home', ['customerId' => $customerId]) }}">Home</a>
               <i class="fas fa-angle-right text-white"></i>
-              <a class="btn text-white disabled" href="{{ route('customer.contact') }}"
+              <a class="btn text-white disabled" href="{{ route('customer.contact', ['customerId' => $customerId]) }}"
                 >Contact Us</a
               >
             </div>

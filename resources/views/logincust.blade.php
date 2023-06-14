@@ -3,12 +3,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>LaundryDar</title>
     <link rel="stylesheet" href="{{ asset('css/login_style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <div class="container">
+    <div>Welcome LaundryDar</div>
       <div class="title">Login</div>
       <div class="content">
         <form action="{{ route('customer.login') }}" method="POST">
@@ -36,6 +37,7 @@
             <input type="submit" value="Login">
           </div>
         </form>
+        <div class="register-link">Belum punya akun? <a href="{{ route('customer.store') }}">Register Sekarang</a></div>
       </div>
     </div>
   </body>

@@ -95,8 +95,9 @@
             id="navbarCollapse"
           >
             <div class="navbar-nav ml-auto py-0">
-              <a href="{{ route('customer.home') }}" class="nav-item nav-link active">Home</a>
-              <a href="{{ route('customer.about') }}" class="nav-item nav-link">About</a>
+              <a href="{{ route('customer.home', ['customerId' => $customerId]) }}" class="nav-item nav-link active">Home</a>
+              <a href="{{ route('customer.orderhistory', ['customerId' => $customerId]) }}" class="nav-item nav-link">Order History</a>
+              <a href="{{ route('customer.about', ['customerId' => $customerId]) }}" class="nav-item nav-link">About</a>
               <div class="nav-item dropdown">
                 <a
                   href="#"
@@ -105,11 +106,11 @@
                   >Profile</a
                 >
                 <div class="dropdown-menu border-0 rounded-0 m-0">
-                  <a href="{{ route('customer.profilecust') }}" class="dropdown-item">My Profile</a>
-                  <a href="{{ route('customer.logout') }}" class="dropdown-item">Logout</a>
+                  <a href="{{ route('customer.profilecust', ['customerId' => $customerId]) }}" class="dropdown-item">My Profile</a>
+                  <a href="{{ route('customer.login', ['customerId' => $customerId]) }}" class="dropdown-item">Logout</a>
                 </div>
               </div>
-              <a href="{{ route('customer.contact') }}" class="nav-item nav-link">Contact</a>
+              <a href="{{ route('customer.contact', ['customerId' => $customerId]) }}" class="nav-item nav-link">Contact</a>
             </div>
           </div>
         </nav>
@@ -134,7 +135,7 @@
                   Layanan Terbaik Laundry
                 </h1>
                 <a
-                  href="pesanlayanan.blade.php"
+                  href="{{ route('transaction.showorderform', ['customerId' => $customerId]) }}"
                   class="btn btn-primary py-md-3 px-md-5 mt-2"
                   >Pesan Layanan</a
                 >
@@ -152,7 +153,7 @@
                 </h4>
                 <h1 class="display-3 text-white mb-md-4">Staff Profesional</h1>
                 <a
-                  href="pesanlayanan.html"
+                  href="{{ route('transaction.showorderform', ['customerId' => $customerId]) }}"
                   class="btn btn-primary py-md-3 px-md-5 mt-2"
                   >Pesan Layanan</a
                 >
@@ -373,7 +374,7 @@
         >
           Keunggulan Layanan
         </h6>
-        <h1 class="display-4 text-center mb-5">Keunggulan Terbaik Kami</h1>
+        <h1 class="display-4 text-center mb-5">Hemat</h1>
         <div class="row">
           <div class="col-lg-3 col-md-6">
             <div
@@ -389,7 +390,7 @@
               >
                 <h2 class="display-2 text-secondary m-0">1</h2>
               </div>
-              <h3 class="font-weight-bold m-0 mt-2">Service di tempat</h3>
+              <h3 class="font-weight-bold m-0 mt-2">Bersih</h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
@@ -406,7 +407,7 @@
               >
                 <h2 class="display-2 text-secondary m-0">2</h2>
               </div>
-              <h3 class="font-weight-bold m-0 mt-2">Jemput Gratis</h3>
+              <h3 class="font-weight-bold m-0 mt-2">Wangi</h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
@@ -423,7 +424,7 @@
               >
                 <h2 class="display-2 text-secondary m-0">3</h2>
               </div>
-              <h3 class="font-weight-bold m-0 mt-2">Cuci Kering</h3>
+              <h3 class="font-weight-bold m-0 mt-2">Pelayanan Ramah</h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
@@ -440,7 +441,7 @@
               >
                 <h2 class="display-2 text-secondary m-0">4</h2>
               </div>
-              <h3 class="font-weight-bold m-0 mt-2">Antar Gratis</h3>
+              <h3 class="font-weight-bold m-0 mt-2">Hemat</h3>
             </div>
           </div>
         </div>
@@ -472,11 +473,10 @@
               alt=""
             />
             <div class="bg-light text-center p-4 pt-0">
-              <h5 class="font-weight-medium mt-5">Client Name</h5>
-              <p class="text-muted font-italic">Profession</p>
+              <h5 class="font-weight-medium mt-5">Mustofa</h5>
+              <p class="text-muted font-italic">CEO Tempe Mendoan</p>
               <p class="m-0">
-                Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-                eirmod clita lorem. Dolor ipsum clita
+                Pelayanan sangat ramah dan memberikan jaminan kepuasan kepada pelanggan.
               </p>
             </div>
           </div>
@@ -494,11 +494,10 @@
               alt=""
             />
             <div class="bg-light text-center p-4 pt-0">
-              <h5 class="font-weight-medium mt-5">Client Name</h5>
-              <p class="text-muted font-italic">Profession</p>
+              <h5 class="font-weight-medium mt-5">Nurul</h5>
+              <p class="text-muted font-italic">Mahasiswa</p>
               <p class="m-0">
-                Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-                eirmod clita lorem. Dolor ipsum clita
+                Sebagai mahasiswa saya ngat terbantu dengan harga yang hemat dan pelayanan yang berkualitas.
               </p>
             </div>
           </div>
@@ -516,11 +515,11 @@
               alt=""
             />
             <div class="bg-light text-center p-4 pt-0">
-              <h5 class="font-weight-medium mt-5">Client Name</h5>
-              <p class="text-muted font-italic">Profession</p>
+              <h5 class="font-weight-medium mt-5">Joko</h5>
+              <p class="text-muted font-italic">Pecinta Sisop</p>
               <p class="m-0">
-                Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-                eirmod clita lorem. Dolor ipsum clita
+                Cukup efektif dan efisien ketika seminggu tidak mencuci baju karena praktikum sisop, 
+                untung ada laundrydar yang siang membantu.
               </p>
             </div>
           </div>
@@ -538,11 +537,10 @@
               alt=""
             />
             <div class="bg-light text-center p-4 pt-0">
-              <h5 class="font-weight-medium mt-5">Client Name</h5>
-              <p class="text-muted font-italic">Profession</p>
+              <h5 class="font-weight-medium mt-5">Luci</h5>
+              <p class="text-muted font-italic">Ibu Rumah Tangga</p>
               <p class="m-0">
-                Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-                eirmod clita lorem. Dolor ipsum clita
+                Pakaian jadi wangi dan bersih. terima kasih laundrydar.
               </p>
             </div>
           </div>
@@ -652,7 +650,7 @@
     <div class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
       <p class="m-0 text-center text-white">
         &copy;
-        <a class="text-white font-weight-medium" href="#">LaundriDar</a>. All
+        <a class="text-white font-weight-medium" href="#">LaundryDar</a>. All
         Rights Reserved.
 
       </p>

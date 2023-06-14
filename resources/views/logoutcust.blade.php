@@ -95,8 +95,9 @@
             id="navbarCollapse"
           >
             <div class="navbar-nav ml-auto py-0">
-              <a href="{{ route('customer.home') }}" class="nav-item nav-link">Home</a>
-              <a href="{{ route('customer.about') }}" class="nav-item nav-link">About</a>
+              <a href="{{ route('customer.home', ['customerId' => $customerId]) }}" class="nav-item nav-link">Home</a>
+              <a href="{{ route('customer.orderhistory', ['customerId' => $customerId]) }}" class="nav-item nav-link">Order History</a>
+              <a href="{{ route('customer.about', ['customerId' => $customerId]) }}" class="nav-item nav-link">About</a>
               <div class="nav-item dropdown">
                 <a
                   href="#"
@@ -105,11 +106,11 @@
                   >Pages</a
                 >
                 <div class="dropdown-menu border-0 rounded-0 m-0">
-                  <a href="{{ route('customer.profilecust') }}" class="dropdown-item">My Profile</a>
-                  <a href="{{ route('customer.logout') }}" class="dropdown-item active">Log Out</a>
+                  <a href="{{ route('customer.profilecust', ['customerId' => $customerId]) }}" class="dropdown-item">My Profile</a>
+                  <a href="{{ route('customer.logout', ['customerId' => $customerId]) }}" class="dropdown-item active">Log Out</a>
                 </div>
               </div>
-              <a href="{{ route('customer.contact') }}" class="nav-item nav-link">Contact</a>
+              <a href="{{ route('customer.contact', ['customerId' => $customerId]) }}" class="nav-item nav-link">Contact</a>
             </div>
           </div>
         </nav>

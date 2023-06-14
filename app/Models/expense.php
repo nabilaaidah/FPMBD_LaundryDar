@@ -11,11 +11,9 @@ class expense extends Model
     protected $table = 'expense';
     protected $primaryKey = 'exp_id';
     protected $fillable = ['exp_type',
+                            'exp_date',
                             'exp_totalexpense',
-                            'created_at',
-                            'updated_at',
-                            'created_at',
-                            'updated_at'];
+                            ];
 
     public function employee(){
         return $this->belongsToMany(employee::class, 'expense_employee', 'exp_id', 'epl_id');

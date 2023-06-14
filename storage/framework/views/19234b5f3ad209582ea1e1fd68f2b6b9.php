@@ -7,14 +7,27 @@
   <link rel="stylesheet" href="<?php echo e(asset('css/transactionform_style.css')); ?>" />
   <script src="<?php echo e(asset('js/transactionform.js')); ?>" defer></script>
   <title>Order Form</title>
+  <style>
+    .input-group label[for="paidPrice"] {
+      color: green;
+      font-weight: bold;
+    }
+  </style>  
 </head>
 <body>
   <?php
     // Retrieve the transaction total price based on the customer ID
     $customerId = $customerId ?? null; // Get the customer ID from the route or set it to null if not available
 
-    $transaction = App\Models\transaction::where('customer_cst_id', $customerId)->latest()->first();
+    $transaction = App\Models\Transaction::where('customer_cst_id', $customerId)->latest()->first();
     $totalPrice = $transaction ? $transaction->tsc_totalprice : 0;
+
+    $discount = 0;
+    if ($totalPrice >= 150000) {
+        $discount = $totalPrice * 0.1;
+    }
+
+    $totalPriceWithDiscount = $totalPrice - $discount;
   ?>
   <form action="<?php echo e(route('payment.paymenttotal', ['customerId' => $customerId])); ?>" class="form">
     <?php echo csrf_field(); ?>
@@ -22,6 +35,11 @@
     <!-- Progress bar -->
     <div class="progressbar">
         <div class="progress" id="progress"></div>
+        <div
+        class="progress-step progress-step-active"
+        data-title="Service"
+      ></div>
+      <div class="progress-step progress-step-active" data-title="Delivery"></div>
       <div class="progress-step progress-step-active" data-title="Total"></div>
       <div class="progress-step" data-title="Payment"></div>
     </div>
@@ -35,6 +53,14 @@
       <div class="input-group">
         <label for="totalPrice">Total Price</label>
         <input type="text" name="totalPrice" id="totalPrice" value="<?php echo e($totalPrice); ?>" readonly />
+      </div>
+      <div class="input-group">
+        <label for="discount">Discount</label>
+        <input type="text" name="discount" id="discount" value="<?php echo e($discount); ?>" readonly />
+      </div>
+      <div class="input-group">
+        <label for="paidPrice">Paid Price</label>
+        <input type="text" name="paidPrice" id="paidPrice" value="<?php echo e($totalPriceWithDiscount); ?>" readonly />
       </div>      
       <div class="btns-group">
         <a href="<?php echo e(route('transaction.processorderform', ['customerId' => $customerId])); ?>" class="btn btn-prev">Previous</a>
